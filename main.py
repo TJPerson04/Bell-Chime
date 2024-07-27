@@ -5,8 +5,8 @@ CHIME_HOURS = [8, 12, 20]
 CHIME_MIN = 23
 RESET_HOUR = 23
 
-WESTMINSTER_FILE_PATH = "home/westminster-chimes.wav"
-BELL_CHIME_FILE_PATH = "home/funeral-bell.wav"
+WESTMINSTER_FILE_PATH = "westminster-chimes.wav"
+BELL_CHIME_FILE_PATH = "funeral-bell.wav"
 
 SOUND_DEVICE = "hdmi:CARD=vc4hdmi1,DEV=0"
 
