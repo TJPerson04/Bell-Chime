@@ -2,4 +2,4 @@ This is a project for The Sanctuary Museum, a nonprofit museum in Lakewood, Ohio
 This project is made to run on a Raspberry Pi 4 that is connected to the speaker system.
 The Raspberry Pi should also run main.py on boot so that when it reboots it automatically runs the program again.
 
-Currently line 33 in main.py is commented out for safety reasons. In actual application that line would not be commented out.
+Currently line 35 in main.py is commented out for safety reasons. In actual application that line would not be commented out.
