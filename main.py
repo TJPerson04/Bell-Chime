@@ -8,7 +8,7 @@ RESET_HOUR = 23
 WESTMINSTER_FILE_PATH = "westminster-chimes.wav"
 BELL_CHIME_FILE_PATH = "funeral-bell.wav"
 
-SOUND_DEVICE = "hdmi:CARD=vc4hdmi1,DEV=0"
+SOUND_DEVICE = "hw:CARD=Headphones,DEV=0"
 
 output = "Church Bells are set for hours: "
 
@@ -28,6 +28,8 @@ while True:
         if currentHour == hour and currentMin == CHIME_MIN and not is_played:
             print("Playing a chime for hour: " + str(hour) + " and min: " + str(CHIME_MIN))
             is_played = True
+
+            os.system("aplay --device " + SOUND_DEVICE + " " + WESTMINSTER_FILE_PATH)
             os.system("aplay --device " + SOUND_DEVICE + " " + WESTMINSTER_FILE_PATH)
 
             # Since datetime works on a 24 hour clock, the hour has to be converted to the 12 hour clock for the chimes
