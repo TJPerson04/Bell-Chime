@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 
 CHIME_HOURS = [9, 12, 18]
-CHIME_MIN = 0
+CHIME_MIN = 1
 RESET_HOUR = 23
 
 WESTMINSTER_FILE_PATH = "westminster-chimes.wav"
