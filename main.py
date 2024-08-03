@@ -1,8 +1,8 @@
 import os
 from datetime import datetime
 
-CHIME_HOURS = [8, 12, 20]
-CHIME_MIN = 23
+CHIME_HOURS = [9, 12, 18]
+CHIME_MIN = 0
 RESET_HOUR = 23
 
 WESTMINSTER_FILE_PATH = "westminster-chimes.wav"
@@ -10,11 +10,19 @@ BELL_CHIME_FILE_PATH = "funeral-bell.wav"
 
 SOUND_DEVICE = "hdmi:CARD=vc4hdmi1,DEV=0"
 
+output = "Church Bells are set for hours: "
+
+for hour in CHIME_HOURS:
+    output += str(hour)
+    output += " "
+print(output)
+
 is_played = False
 while True:
     now = datetime.now()
     currentHour = now.hour
     currentMin = now.minute
+    currentSec = now.second
 
     for hour in CHIME_HOURS:
         if currentHour == hour and currentMin == CHIME_MIN and not is_played:
@@ -30,7 +38,7 @@ while True:
             for i in range(numRepeat):
                 os.system("aplay --device " + SOUND_DEVICE + " " + BELL_CHIME_FILE_PATH)
     
-    if currentHour == RESET_HOUR and currentMin == 0:  # So that the Raspberry Pi is not just constantly on
+    if currentHour == RESET_HOUR and currentMin == 0 and currentSec == 0:  # So that the Raspberry Pi is not just constantly on
         print("Rebooting Now")
         # os.system("sudo reboot -n")
     if not (currentHour in CHIME_HOURS) or currentMin != CHIME_MIN:
