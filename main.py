@@ -1,8 +1,8 @@
 import os
 from datetime import datetime
 
-CHIME_HOURS = [8, 11, 17]
-CHIME_MIN = 58
+CHIME_HOURS = [9, 11, 17]  # If you add an hour make sure to add a corresponding minute
+CHIME_MINS = [0, 58, 58]  # CHIME_MINS & CHIME_HOURS should be the same length
 RESET_HOUR = 23
 VOLUME = 60  # Set the volume (out of 100)
 
@@ -11,11 +11,15 @@ BELL_CHIME_FILE_PATH = "funeral-bell.wav"
 
 SOUND_DEVICE = "hdmi:CARD=vc4hdmi1,DEV=0"
 
-output = "Church Bells are set for hours: "
+output = "Church Bells are set for "
 
-for hour in CHIME_HOURS:
-    output += str(hour)
-    output += " "
+for i in range(len(CHIME_HOURS)):
+    hour = CHIME_HOURS[i]
+    min = CHIME_MINS[i]
+
+    output += str(hour) + ":" + str(min)
+    if i != len(CHIME_HOURS) - 1:
+        output += ", "
 print(output)
 
 is_played = False
@@ -25,9 +29,11 @@ while True:
     currentMin = now.minute
     currentSec = now.second
 
-    for hour in CHIME_HOURS:
-        if currentHour == hour and currentMin == CHIME_MIN and not is_played:
-            print("Playing a chime for hour: " + str(hour) + " and min: " + str(CHIME_MIN))
+    for i in range(len(CHIME_HOURS)):
+        hour = CHIME_HOURS[i]
+        min = CHIME_MINS[i]
+        if currentHour == hour and currentMin == min and not is_played:
+            print("Playing a chime for " + str(hour) + ":" + str(min))
             is_played = True
 
             os.system("amixer set Master " + VOLUME + "%")
@@ -45,5 +51,5 @@ while True:
     if currentHour == RESET_HOUR and currentMin == 0 and currentSec == 0:  # So that the Raspberry Pi is not just constantly on
         print("Rebooting Now")
         # os.system("sudo reboot -n")
-    if not (currentHour in CHIME_HOURS) or currentMin != CHIME_MIN:
+    if not (currentHour in CHIME_HOURS) or not (currentMin in CHIME_MINS):
         is_played = False
