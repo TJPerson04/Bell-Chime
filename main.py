@@ -1,8 +1,8 @@
 import os
 from datetime import datetime
 
-CHIME_HOURS = [9, 12, 18]
-CHIME_MIN = 1
+CHIME_HOURS = [8, 11, 17]
+CHIME_MIN = 58
 RESET_HOUR = 23
 VOLUME = 60  # Set the volume (out of 100)
 
@@ -35,7 +35,7 @@ while True:
             os.system("aplay --device " + SOUND_DEVICE + " " + WESTMINSTER_FILE_PATH)
 
             # Since datetime works on a 24 hour clock, the hour has to be converted to the 12 hour clock for the chimes
-            numRepeat = hour % 12
+            numRepeat = hour % 12 + 1  # + 1 b/c bell playing 2 minutes before actual hour
             if numRepeat == 0:
                 numRepeat = 12
 
