@@ -4,6 +4,7 @@ from datetime import datetime
 CHIME_HOURS = [9, 12, 18]
 CHIME_MIN = 1
 RESET_HOUR = 23
+VOLUME = 60  # Set the volume (out of 100)
 
 WESTMINSTER_FILE_PATH = "westminster-chimes.wav"
 BELL_CHIME_FILE_PATH = "funeral-bell.wav"
@@ -29,6 +30,7 @@ while True:
             print("Playing a chime for hour: " + str(hour) + " and min: " + str(CHIME_MIN))
             is_played = True
 
+            os.system("amixer set Master " + VOLUME + "%")
             os.system("aplay --device " + SOUND_DEVICE + " " + WESTMINSTER_FILE_PATH)
             os.system("aplay --device " + SOUND_DEVICE + " " + WESTMINSTER_FILE_PATH)
 
