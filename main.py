@@ -18,6 +18,8 @@ for i in range(len(CHIME_HOURS)):
     min = CHIME_MINS[i]
 
     output += str(hour) + ":" + str(min)
+    if min == 0:
+        output += "0"
     if i != len(CHIME_HOURS) - 1:
         output += ", "
 print(output)
