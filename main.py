@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 
 CHIME_HOURS = [9, 12, 17]  # If you add an hour make sure to add a corresponding minute
-CHIME_MINS = [0, 4, 58]  # CHIME_MINS & CHIME_HOURS should be the same length
+CHIME_MINS = [0, 5, 58]  # CHIME_MINS & CHIME_HOURS should be the same length
 RESET_HOUR = 23
 VOLUME = 100  # Set the volume (out of 100)
 
