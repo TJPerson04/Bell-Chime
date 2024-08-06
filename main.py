@@ -1,8 +1,8 @@
 import os
 from datetime import datetime
 
-CHIME_HOURS = [9, 11, 17]  # If you add an hour make sure to add a corresponding minute
-CHIME_MINS = [0, 58, 58]  # CHIME_MINS & CHIME_HOURS should be the same length
+CHIME_HOURS = [9, 12, 17]  # If you add an hour make sure to add a corresponding minute
+CHIME_MINS = [0, 2, 58]  # CHIME_MINS & CHIME_HOURS should be the same length
 RESET_HOUR = 23
 VOLUME = 60  # Set the volume (out of 100)
 
@@ -13,13 +13,19 @@ SOUND_DEVICE = "hdmi:CARD=vc4hdmi1,DEV=0"
 
 output = "Church Bells are set for "
 
+def formatTime(min):
+    if (min == 0):
+        return "00"
+
 for i in range(len(CHIME_HOURS)):
     hour = CHIME_HOURS[i]
     min = CHIME_MINS[i]
 
-    output += str(hour) + ":" + str(min)
+    output += str(hour) + ":"
+
+    # Properly formats
     if min == 0:
-        output += "0"
+        output += "00"
     if i != len(CHIME_HOURS) - 1:
         output += ", "
 print(output)
@@ -43,7 +49,7 @@ while True:
             os.system("aplay --device " + SOUND_DEVICE + " " + WESTMINSTER_FILE_PATH)
 
             # Since datetime works on a 24 hour clock, the hour has to be converted to the 12 hour clock for the chimes
-            numRepeat = hour % 12 + 1  # + 1 b/c bell playing 2 minutes before actual hour
+            numRepeat = hour % 12
             if numRepeat == 0:
                 numRepeat = 12
 
