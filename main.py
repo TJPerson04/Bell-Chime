@@ -4,7 +4,7 @@ from datetime import datetime
 CHIME_HOURS = [9, 12, 17]  # If you add an hour make sure to add a corresponding minute
 CHIME_MINS = [0, 2, 58]  # CHIME_MINS & CHIME_HOURS should be the same length
 RESET_HOUR = 23
-VOLUME = 60  # Set the volume (out of 100)
+VOLUME = 100  # Set the volume (out of 100)
 
 WESTMINSTER_FILE_PATH = "westminster-chimes.wav"
 BELL_CHIME_FILE_PATH = "funeral-bell.wav"
