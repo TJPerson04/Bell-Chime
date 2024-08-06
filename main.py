@@ -9,7 +9,7 @@ VOLUME = 100  # Set the volume (out of 100)
 WESTMINSTER_FILE_PATH = "westminster-chimes.wav"
 BELL_CHIME_FILE_PATH = "funeral-bell.wav"
 
-SOUND_DEVICE = "hdmi:CARD=vc4hdmi1,DEV=0"
+SOUND_DEVICE = "hw:CARD=Headphones,DEV=0"
 
 output = "Church Bells are set for "
 
