@@ -36,7 +36,7 @@ while True:
             print("Playing a chime for " + str(hour) + ":" + str(min))
             is_played = True
 
-            os.system("amixer set Master " + VOLUME + "%")
+            os.system("amixer set Master " + str(VOLUME) + "%")
             os.system("aplay --device " + SOUND_DEVICE + " " + WESTMINSTER_FILE_PATH)
             os.system("aplay --device " + SOUND_DEVICE + " " + WESTMINSTER_FILE_PATH)
 
