@@ -60,6 +60,6 @@ while True:
     
     if currentHour == RESET_HOUR and currentMin == 0 and currentSec == 0:  # So that the Raspberry Pi is not just constantly on
         print("Rebooting Now")
-        # os.system("sudo reboot -n")
+        os.system("sudo reboot -n")
     if not (currentHour in CHIME_HOURS) or not (currentMin in CHIME_MINS):
         is_played = False
